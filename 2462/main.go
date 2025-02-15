@@ -5,6 +5,7 @@ import (
 	"fmt"
 )
 
+// REVISIT
 type Worker struct {
 	cost  int
 	index int

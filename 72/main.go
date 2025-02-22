@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// REVISIT
 func main() {
 	fmt.Println(minDistanceOptimized("toseanss", "moseandtoss"))
 }

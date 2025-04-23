@@ -12,7 +12,6 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 	nums2I := n - 1
 
 	for currIndex >= 0 && nums1I >= 0 && nums2I >= 0 {
-		fmt.Println("nums1", nums1, "nums2I", nums2I, nums1I)
 		if nums2[nums2I] > nums1[nums1I] {
 			nums1[currIndex] = nums2[nums2I]
 			nums2I--
@@ -23,7 +22,6 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 			currIndex--
 		}
 	}
-	fmt.Println("outside nums1", nums1, currIndex, "nums2I", nums2I, nums1I)
 
 	if nums1I < 0 && nums2I >= 0 {
 		for nums2I >= 0 {

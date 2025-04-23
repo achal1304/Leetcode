@@ -6,10 +6,6 @@ func main() {
 	fmt.Println(longestCommonSubsequence("abcba", "abcbcba"))
 }
 
-type Point struct {
-	x, y int
-}
-
 func longestCommonSubsequence(text1 string, text2 string) int {
 	dp := make([][]int, len(text1)+1)
 	for i, _ := range dp {

@@ -28,7 +28,6 @@ func rob(nums []int) int {
 	for i := 3; i < len(nums); i++ {
 		dp[i] = max(dp[i-2]+nums[i], dp[i-3]+nums[i])
 	}
-	fmt.Println(dp)
 
 	return max(dp[len(nums)-1], dp[len(nums)-2])
 }

@@ -7,7 +7,7 @@ func main() {
 }
 
 func canCompleteCircuit(gas []int, cost []int) int {
-	if len(gas) == 0 || len(gas) == 1 {
+	if len(gas) == 0  {
 		return 0
 	}
 

@@ -26,10 +26,8 @@ func canVisitAllRooms(rooms [][]int) bool {
 	visited := make(map[int]bool)
 	visited[0] = true
 
-	fmt.Println(len(rooms))
 	for len(stack) > 0 {
 		ele := stack[len(stack)-1]
-		fmt.Println("stack ", stack, "ele ", ele, "visited ", visited)
 		stack = stack[:len(stack)-1]
 
 		if visited[ele] {
@@ -46,6 +44,5 @@ func canVisitAllRooms(rooms [][]int) bool {
 		}
 	}
 
-	fmt.Println(len(visited))
 	return false
 }

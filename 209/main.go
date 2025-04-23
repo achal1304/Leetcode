@@ -31,10 +31,3 @@ func minSubArrayLen(target int, nums []int) int {
 	}
 	return minLen
 }
-
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}

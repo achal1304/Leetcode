@@ -35,7 +35,6 @@ func candy(ratings []int) int {
 		total += candyAlloc[i]
 	}
 
-	fmt.Println(candyAlloc)
 
 	return total
 }

@@ -70,7 +70,6 @@ func zigZag(root *TreeNode, currCount int, maxCount *int, isRight bool) {
 		return
 	}
 
-	fmt.Println("currentcount ", currCount, "maxCount ", maxCount, "root", root, isRight)
 	if currCount > *maxCount {
 		*maxCount = currCount
 	}
@@ -82,8 +81,6 @@ func zigZag(root *TreeNode, currCount int, maxCount *int, isRight bool) {
 		zigZag(root.Left, 1, maxCount, false)
 		zigZag(root.Right, currCount+1, maxCount, true)
 	}
-
-	fmt.Println("returning maxCount ", maxCount)
 }
 
 func max(i, j int) int {

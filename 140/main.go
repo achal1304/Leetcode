@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// REVISIT : HARD
 func main() {
 	fmt.Println(wordBreak("catsanddog", []string{"cat", "cats", "and", "sand", "dog"}))
 }

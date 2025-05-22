@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// REVISIT
+// REVISIT - HARD
 func main() {
 	fmt.Println(candy([]int{1, 2, 3, 5, 4, 3, 2, 1, 8, 4, 3, 2, 5, 6, 7}))
 }
@@ -34,7 +34,6 @@ func candy(ratings []int) int {
 		}
 		total += candyAlloc[i]
 	}
-
 
 	return total
 }

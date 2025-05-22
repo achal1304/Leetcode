@@ -5,7 +5,7 @@ import (
 	"unicode"
 )
 
-// REVISIT
+// REVISIT - HARD
 func main() {
 	fmt.Println(calculate("(1+(4+5+2)-3)+(6+8)"))
 }

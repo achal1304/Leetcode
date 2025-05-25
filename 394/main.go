@@ -5,6 +5,7 @@ import (
 	"unicode"
 )
 
+// REVISIT
 func main() {
 	fmt.Println(decodeString("2[abc]3[cd]ef"))
 }

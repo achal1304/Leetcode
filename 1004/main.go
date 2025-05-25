@@ -20,6 +20,8 @@ func max(a, b int) int {
 	return b
 }
 
+// REVISIT
+
 func longestOnes(nums []int, k int) int {
 	n := len(nums)
 	l, r := 0, 0

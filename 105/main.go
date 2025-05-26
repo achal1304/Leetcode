@@ -1,5 +1,12 @@
 package main
 
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
 // REVISIT
 
 type TreeNode struct {
@@ -9,7 +16,14 @@ type TreeNode struct {
 }
 
 func main() {
-
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	element := scanner.Text()
+	preOrder := strings.Split(element, " ")
+	scanner.Scan()
+	element = scanner.Text()
+	inOrder := strings.Split(element, " ")
+	fmt.Println(preOrder, inOrder)
 }
 
 func buildTree(preorder []int, inorder []int) *TreeNode {

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 )
-
+ 
 func main() {
 	// fmt.Println(simplifyPath("/../"))
 	// fmt.Println(simplifyPath("/.../a/..///////b/c/../d/./"))
@@ -16,11 +16,8 @@ func simplifyPath(path string) string {
 
 	start := 0
 	for i := 1; i < len(path); i++ {
-		fmt.Println(stack)
 		if path[i] == '/' {
-			fmt.Println("inside if", stack, start, i)
 			ele := path[start+1 : i]
-			fmt.Println("ele", ele)
 			switch ele {
 			case "..":
 				if len(stack) > 0 {
@@ -30,7 +27,6 @@ func simplifyPath(path string) string {
 			case "/":
 			default:
 				if ele != "" {
-					fmt.Println("appending to stack", path[start+1:i], start, i)
 					stack = append(stack, path[start+1:i])
 				}
 			}
@@ -49,11 +45,9 @@ func simplifyPath(path string) string {
 	case "/":
 	default:
 		if ele != "" {
-			fmt.Println("appending to stack", path[start+1:], start)
 			stack = append(stack, path[start+1:])
 		}
 	}
-	fmt.Println(stack, len(stack))
 
 	if len(stack) == 0 {
 		return "/"

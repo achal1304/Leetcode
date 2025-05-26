@@ -16,7 +16,7 @@ func sumNumbers(root *TreeNode) int {
 	if root == nil {
 		return 0
 	}
-
+  
 	return generateNum(root, 0, 0)
 }
 

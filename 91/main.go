@@ -14,7 +14,7 @@ func numDecodings(s string) int {
 	return numDecodingsWithDp(s, dp)
 }
 
-func numDecodingsWithDp(s string, dp map[string]int) int {
+func numDecodingsWithDp(s string, dp map[string]int) int { 
 	if len(s) == 0 {
 		return 1
 	}

@@ -39,10 +39,8 @@ func maximizeSquareHoleArea(n int, m int, hBars []int, vBars []int) int {
 			count = 2
 		}
 	}
-	fmt.Println(hCount, vCount)
 	maxCount := 2
 	for k, _ := range hCount {
-		fmt.Println("k", k, maxCount)
 		if vCount[k] {
 			if k > maxCount {
 				maxCount = k

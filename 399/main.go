@@ -1,67 +1,66 @@
 package main
 
-import "fmt"
+func calcEquation(
+	equations [][]string,
+	values []float64,
+	queries [][]string,
+) []float64 {
+	// Step 1: Build the graph
+	graph := make(map[string]map[string]float64)
 
-type Value struct {
-	Den string
-	Val float64
-}
+	for i, eq := range equations {
+		a, b := eq[0], eq[1]
+		val := values[i]
 
-// REVISIT
-func main() {
-	equations := [][]string{
-		{"a", "b"},
-		{"b", "c"},
-	}
-
-	values := []float64{2.0, 3.0}
-
-	queries := [][]string{
-		{"a", "c"},
-		{"b", "a"},
-		{"a", "e"},
-		{"a", "a"},
-		{"x", "x"},
-	}
-
-	fmt.Println(calcEquation(equations, values, queries))
-}
-
-func calcEquation(equations [][]string, values []float64, queries [][]string) []float64 {
-	paths := make(map[string][]Value)
-	solved := []float64{}
-	for i, ele := range equations {
-		paths[ele[0]] = append(paths[ele[0]], Value{ele[1], values[i]})
-		paths[ele[1]] = append(paths[ele[1]], Value{ele[0], 1 / values[i]})
-	}
-	fmt.Println(paths)
-
-	bfs := func(paths map[string][]Value, num, den string) float64 {
-		queue := []Value{{num, 1.0}}
-		visited := make(map[string]bool)
-
-		for len(queue) > 0 {
-			num := queue[0].Den
-			currVal := queue[0].Val
-			queue = queue[1:]
-			for _, ele := range paths[num] {
-				if ele.Den == den {
-					return currVal * ele.Val
-				} else {
-					if !visited[ele.Den] {
-						queue = append(queue, Value{ele.Den, currVal * ele.Val})
-						visited[ele.Den] = true
-					}
-				}
-			}
+		if graph[a] == nil {
+			graph[a] = make(map[string]float64)
+		}
+		if graph[b] == nil {
+			graph[b] = make(map[string]float64)
 		}
 
-		return -1.0
+		graph[a][b] = val
+		graph[b][a] = 1 / val
 	}
 
-	for _, ele := range queries {
-		solved = append(solved, bfs(paths, ele[0], ele[1]))
+	// Step 2: Process each query
+	var results []float64
+	for _, query := range queries {
+		start, end := query[0], query[1]
+		if graph[start] == nil || graph[end] == nil {
+			results = append(results, -1.0)
+		} else if start == end {
+			results = append(results, 1.0)
+		} else {
+			visited := make(map[string]bool)
+			result := dfs(graph, start, end, 1.0, visited)
+			results = append(results, result)
+		}
 	}
 
-	return solved
+	return results
+}
+
+func dfs(
+	graph map[string]map[string]float64,
+	curr, target string,
+	product float64,
+	visited map[string]bool,
+) float64 {
+	if curr == target {
+		return product
+	}
+
+	visited[curr] = true
+
+	for neighbor, val := range graph[curr] {
+		if !visited[neighbor] {
+			res := dfs(graph, neighbor, target, product*val, visited)
+			if res != -1.0 {
+				return res
+			}
+		}
+	}
+
+	return -1.0
 }

@@ -1,5 +1,7 @@
 package main
 
+// REVISIT : MEDIUM : Graph and InDegree
+
 func canFinish(numCourses int, prerequisites [][]int) bool {
 	graph := make(map[int][]int)
 	inDegree := make([]int, numCourses)
